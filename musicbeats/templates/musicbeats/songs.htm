@@ -1,0 +1,27 @@
+{%extends 'musicbeats/basic.htm'%}
+{% block title %} All Songs{% endblock %}
+
+{% block body %}
+<div class="container">
+{% for i in song %}
+
+
+
+<div class="card mb-3" style="max-width: 640px; padding-top: 2%;">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="/media/{{i.image}}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{i.name}}</h5>
+        <p class="card-text"> {{i.singer}}</p>
+        <p class="card-text"> {{i.movie}}</p>
+        <a href="/musicbeats/songs/{{i.song_id}}"><button class="btn btn-outline-danger">Play</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+</div>
+{% endblock %}

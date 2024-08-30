@@ -1,0 +1,32 @@
+{%extends 'musicbeats/basic.htm'%}
+{% block title %} All Songs{% endblock %}
+
+{% block body %}
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-6" style="padding-top:5%">
+            <img src="/media/{{song.image}}" alt="" height="500px" width="500px">
+        </div>
+        <div class="col-md-6" style="padding-top:4%">
+            <h2 style="padding-top:6%;font-weight: bold">Title : {{song.name}}</h2>
+            <h5 style="padding-top:2%;font-weight: bold;">Singer : {{song.singer}}</h5>
+            <h5 style="padding-top:2%;font-weight: bold;">Movie : {{song.movie}}</h5>
+            <audio controls style="padding-top: 2%;">
+                <source src="/media/{{song.song}}" type="audio/mp3">
+            </audio> 
+            <div style="padding-top: 2%;">
+                
+            <div>
+            <form action="/musicbeats/watchlater" method="POST">{% csrf_token %}
+            <input type="hidden" name="Video_id" value="{{song.song_id}}">
+            <button type="submit" class="btn btn-outline-danger">Add to Watchlater</button>
+            </form>
+            <a href="/media/{{song.song}}" download><button class="btn btn-outline-danger">Download Song</button></a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+</script>
+{% endblock %}
